@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+'说明： 单例模式 Singleton Pattern
+
+class SingleObject {
+ - instance: SingleObject
+ - SingleObject()
+ + SingleObject getInstance()
+
+}
+class Client
+
+Client --> SingleObject : 依赖
+
+SingleObject -- SingleObject
+
+@enduml
