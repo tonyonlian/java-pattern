@@ -1,0 +1,53 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Item{
+  + String name()
+  + Packing packing()
+  + fload price()
+}
+
+interface Packing{
+   + String pack()
+}
+
+class Wrapper
+class Bottle
+abstract class Burger
+abstract class ColdDrink
+class VegBurger
+class ChickenBurger
+class PePsi
+class Coke
+class Meal{
+  - List<Item> items
+  + void addItem(Item items)
+  + fload getCost()
+  + void showItems()
+
+}
+
+class MealBuilder{
+    + Meal prepareVegMeal()
+    + Meal prepareNonVegMeal()
+}
+
+class Client
+
+Item ..> Packing
+Packing ^-- Wrapper
+Packing ^-- Bottle
+Item ^-- Burger
+Item ^-- ColdDrink
+Burger ..> Wrapper
+ColdDrink ..> Bottle
+Burger ^-- VegBurger
+Burger ^-- ChickenBurger
+ColdDrink ^-- PePsi
+ColdDrink ^-- Coke
+Meal o-- Item
+MealBuilder --> Meal
+Client --> MealBuilder
+
+
+@enduml
