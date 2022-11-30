@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+title "里氏替换原则"
+
+class Rectangle{
+    - double width
+    - double length
+    + void setLength(double length)
+    + double getLength()
+    + void setWidth(double width)
+    + double getWidth()
+
+}
+
+class Square{
+    + void setLength(double length)
+    + void setWidth(double width)
+}
+
+class RectangleDemo{
+    + void resize(Rectangle rectangle)
+    + void printLengthAndWidth(Rectangle rectangle)
+}
+
+Rectangle <|-- Square : 继承
+RectangleDemo  ..> Rectangle : 依赖
+
+@enduml

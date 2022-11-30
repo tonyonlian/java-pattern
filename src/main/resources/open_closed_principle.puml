@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+title "开闭原则 Open Closed Principle"
+
+' 对扩展开放，对修改关闭
+
+abstract class AbstractSkin
+class DefaultSpecificSkin
+class LightSpecificSkin
+class SouGouInput
+class Client
+
+AbstractSkin <|-- DefaultSpecificSkin : 继承
+AbstractSkin <|-- LightSpecificSkin : 继承
+SouGouInput --> AbstractSkin : 单向关联
+Client ..> SouGouInput : 依赖
+
+
+@enduml

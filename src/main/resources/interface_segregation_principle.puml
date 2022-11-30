@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title "接口隔离原则 Interface Segregation Principle"
+
+'客户端不应该被迫依赖于它不使用的方法；一个类对另一个类依赖应该建立在最小的接口上
+'-----------------------
+' 再创建个PiPi的安全门可能没有防水功能，则不需要申明的防水方法
+
+interface SafeDoor{
+    + void antiTheft()
+    + void fireproof()
+    + void waterproof()
+}
+
+class HahaSafeDoor
+
+SafeDoor <|.. HahaSafeDoor
+
+'-----------------------
+' 正例
+interface AntiTheft{
+    + void antiTheft()
+}
+interface FireProof{
+    + void fireproof()
+}
+interface Waterproof{
+    + void waterproof()
+}
+
+class HahaSafeDoor1
+
+AntiTheft <|.. HahaSafeDoor1
+FireProof <|.. HahaSafeDoor1
+Waterproof<|.. HahaSafeDoor1
+
+@enduml

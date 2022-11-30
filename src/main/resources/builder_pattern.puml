@@ -49,5 +49,4 @@ Meal o-- Item
 MealBuilder --> Meal
 Client --> MealBuilder
 
-
 @enduml

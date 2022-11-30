@@ -1,0 +1,69 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title "依赖倒转原则 Dependence Inversion Principle"
+' 依赖倒转原则 正例
+class Computer{
+    - HardDisk hardDisk
+    - Cpu cpu
+    - Memory memory
+
+    + void setHardDisk(HardDisk hardDisk)
+    + HardDisk getHardDisk()
+    + void setCpu(Cpu cpu)
+    + Cpu getCpu()
+    + void setMemory(Memory memory))
+    + Memory getMemory()
+
+}
+
+interface HardDisk{
+    + void save(String data)
+    + String get()
+}
+
+interface Cpu{
+    + void run()
+}
+interface Memory{
+    + void save()
+}
+
+class XiJieHardDisk
+class IntelCpu
+class KingstonMemory
+
+Computer *-- HardDisk : 组合关系
+Computer *-- Cpu : 组合关系
+Computer *-- Memory : 组合关系
+
+HardDisk <|.. XiJieHardDisk : 实现关系
+Cpu <|.. IntelCpu : 实现关系
+Memory <|.. KingstonMemory : 实现关系
+
+'---------------
+' 依赖倒转原则 反倒
+
+class Computer1{
+    - XiJieHardDisk1 hardDisk
+    - IntelCpu1 cpu
+    - KingstonMemory1 memory
+
+    + void setHardDisk(XiJieHardDisk1 hardDisk)
+    + HardDisk getHardDisk()
+    + void setCpu(IntelCpu cpu)
+    + Cpu getCpu()
+    + void setMemory(KingstonMemory1 memory)
+    + Memory getMemory()
+
+}
+class XiJieHardDisk1
+class IntelCpu1
+class KingstonMemory1
+
+Computer1 *-- XiJieHardDisk1
+Computer1 *-- IntelCpu1
+Computer1 *-- KingstonMemory1
+
+
+@enduml
