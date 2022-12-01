@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title "迪米特法则 Law Of Demeter Principle"
+
+' 只跟你的直接朋友交谈，不跟陌生人说话，朋友指当前对象本身、当前对象的成员对象、当前对象所创建的对象，当前对象的方法参数等
+'--------------------
+' 明星通过经纪人与粉丝见面，通过经纪人与公司商谈业务，而不是直接与粉丝见面，与公司商谈业务
+class Agent{
+    - Star star
+    - Fans fans
+    - Company company
+    + void setStar(Star star)
+    + void setFans(Fans fans)
+    + void setCompany(Company company)
+    + void meeting()
+    + void business()
+}
+
+class Star{
+    - String name
+    + Star(String name)
+    + String getName()
+}
+class Fans{
+    - String name
+    + Fans(String name)
+    + String getName()
+}
+
+class Company{
+    - String name
+    + Company(String name)
+    + String getName()
+}
+Agent o-- Star
+Agent o-- Fans
+Agent o-- Company
+@enduml
