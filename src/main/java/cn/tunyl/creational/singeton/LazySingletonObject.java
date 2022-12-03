@@ -1,4 +1,4 @@
-package cn.tunyl.singeton;
+package cn.tunyl.creational.singeton;
 
 /**
  * 懒汉式

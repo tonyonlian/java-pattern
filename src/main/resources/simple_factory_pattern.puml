@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title "简单工厂模式 Simple Factory Pattern"
+
+class Coffee{
+    + String getName()
+    + void addMilk()
+    + void addSugar()
+}
+
+class AmericanoCoffee{
+    + String getName()
+}
+
+class LatteCoffee{
+    + String getName()
+}
+
+class SimpleFactory{
+    + Coffee createCoffee(String type)
+}
+
+class CoffeeStore{
+    + Coffee orderCoffee(String type)
+}
+
+Coffee <|-- AmericanoCoffee
+Coffee <|-- LatteCoffee
+SimpleFactory ..> Coffee
+CoffeeStore ..> SimpleFactory
+
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title "抽象工厂模式 Abstract Factory Pattern"
+
+interface DessertFactory{
+    + Coffee createCoffee()
+    + Dessert createDessert()
+}
+
+class AmericanDessertFactory{
+
+    + Coffee createCoffee()
+    + Dessert createDessert()
+}
+
+class ItalyDessertFactory{
+    + Coffee createCoffee()
+    + Dessert createDessert()
+}
+
+DessertFactory <|.. AmericanDessertFactory
+DessertFactory <|.. ItalyDessertFactory
+
+class Coffee{
+    + String getName()
+    + void addMilk()
+    + void addSugar()
+
+}
+
+class AmericanCoffee{
+    + String getName()
+}
+class LatteCoffee{
+    + String getName()
+}
+Coffee <|-- AmericanCoffee
+Coffee <|-- LatteCoffee
+
+class Dessert{
+    + void show()
+}
+class Triamisu{
+    + void show()
+}
+class MatchaMousse{
+    + void show()
+}
+Dessert <|.. Triamisu
+Dessert <|.. MatchaMousse
+
+AmericanDessertFactory ..> MatchaMousse
+AmericanDessertFactory ..> AmericanCoffee
+
+ItalyDessertFactory ..> Triamisu
+ItalyDessertFactory ..> LatteCoffee
+
+@enduml

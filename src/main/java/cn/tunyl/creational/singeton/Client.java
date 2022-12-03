@@ -1,4 +1,4 @@
-package cn.tunyl.singeton;
+package cn.tunyl.creational.singeton;
 
 public class Client {
     public static void main(String[] args) {

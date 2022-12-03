@@ -1,4 +1,4 @@
-package cn.tunyl.singeton;
+package cn.tunyl.creational.singeton;
 
 /**
  * 登记式/静态内部类

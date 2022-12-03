@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title "工厂方法模式 Factory Method Pattern"
+
+class Coffee{
+    + String getName()
+    + void addMilk()
+    + void addSugar()
+}
+
+class AmericanCoffee{
+    + String getName()
+}
+class LatteCoffee{
+    + String getName()
+}
+
+interface CoffeeFactory{
+    + Coffee createCoffee()
+}
+
+class AmericanCoffeeFactory{
+    + Coffee createCoffee
+}
+class LatteCoffeeFactory{
+    + Coffee createCoffee()
+}
+class CoffeeStore{
+    - CoffeeFactory createCoffee;
+    + Coffee orderCoffee()
+}
+
+Coffee <|-- AmericanCoffee
+Coffee <|-- LatteCoffee
+CoffeeFactory <|.. AmericanCoffeeFactory
+CoffeeFactory <|.. LatteCoffeeFactory
+
+AmericanCoffeeFactory ..> AmericanCoffee
+LatteCoffeeFactory ..> LatteCoffee
+
+CoffeeStore --> CoffeeFactory
+CoffeeStore ..> Coffee
+
+
+@enduml
