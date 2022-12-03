@@ -1,0 +1,69 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title "合成利用原则 Composite Reuse Principle"
+'----------------------------------------
+' 反例：继承复用
+
+class Car{
+    + void move()
+}
+
+class PetrolCar{
+    + void move()
+}
+
+class ElectricCar{
+    + void move()
+}
+
+class RedPetrolCar{
+    + void move()
+}
+
+class WhitePetrolCar{
+    + void move()
+}
+class RedElectricCar{
+    + void move()
+}
+class WhiteElectricCar{
+    + void move()
+}
+
+Car <|-- PetrolCar
+Car <|-- ElectricCar
+PetrolCar <|-- RedPetrolCar
+PetrolCar <|-- WhitePetrolCar
+ElectricCar <|-- RedElectricCar
+ElectricCar <|-- WhiteElectricCar
+
+'--------------------------
+' 正例
+
+class Car1{
+    # Color color
+    + void move()
+}
+
+class PetrolCar1{
+    + void move()
+}
+class ElectricCar1{
+    + void move()
+}
+
+interface Color
+class Red
+class White
+
+Car1 <|-- PetrolCar1
+Car1 <|-- ElectricCar1
+
+Color <|.. Red
+Color <|.. White
+
+Car1 o-- Color
+
+
+@enduml
