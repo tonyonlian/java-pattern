@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title "原型模式 Prototype Pattern"
+
+interface ProtoType{
+    + ProtoType clone()
+}
+
+class RealizeType{
+    + RealizeType clone()
+}
+
+ProtoType <|.. RealizeType
+class ProtoTypeTest
+ProtoTypeTest ..> RealizeType
+
+note "RealizeType rt1 = new RealizeType();\nRealizeType rt2 = rt1.clone();" as N1
+N1 .. ProtoTypeTest
+@enduml
