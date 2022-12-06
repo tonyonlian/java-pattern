@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title "代理模式 Proxy pattern"
+' 结构角色:
+' 1.抽象主题（Subject)类： 通过接口或抽象类申明真实主题和代理对象实现的方法
+' 2.真实主题（Real Subject）类： 实现了抽象主题中的的具体业务,是代理类代表的真实对象，是最终要引用的对象
+' 3.代理（Proxy）类： 提供与真实对象相同的接口，其内部含有真实主题的引用，它可以访问，控制或扩展真实主题功能
+
+interface SellTickets{
+    + void sell()
+}
+class TrainStation{
+    + void sell()
+}
+class ProxyPoint{
+    - SellTickets trainStation;
+    + void sell()
+}
+class client{
+    + main(String[] args)
+}
+
+SellTickets <|.. TrainStation
+SellTickets <|.. ProxyPoint
+TrainStation o-- ProxyPoint
+client ..> ProxyPoint
+
+@enduml
