@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title "建造者模式 Builder Pattern"
+
+abstract class Builder{
+    # Bike mbike
+    + void buildFrame()
+    + void buildSeat()
+    + Bike createBike()
+}
+
+class Bike{
+    - String frame
+    - String seat
+    + void setFrame(String frame)
+    + void setSeat(String seat)
+    + String getFrame()
+    + String getSeat()
+
+}
+
+class MobikeBuilder{
+    + void buildFrame()
+    + void buildSeat()
+    + Bike createBike()
+
+}
+
+class OfoBuilder{
+    + void buildFrame()
+    + void buildSeat()
+    + Bike createBike()
+
+}
+
+class Director{
+    - Builder builder
+    + Director(Builder builder)
+    + Bike construct()
+}
+
+class Client
+
+Builder <|-- MobikeBuilder
+Builder <|-- OfoBuilder
+Builder o-- Bike
+Director o-- Builder
+Client ..> Bike
+Client ..> Director
+
+@enduml
